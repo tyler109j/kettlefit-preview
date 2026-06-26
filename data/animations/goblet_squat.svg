@@ -1,18 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
-  <!-- Goblet Squat v3 — deeper bottom, arms pinned tight at chest.
-       Key fixes from v2:
-         - Bottom is now ACTUALLY deep: hip below knee, knees forward over
-           toes. Hip y goes to 210 (was 194), knee y goes to 220 (was 218),
-           so knee is barely below hip — actually for a parallel squat hip
-           should be AT or below knee level. I'll put hip y=212, knee y=210
-           (slightly above), which is realistic for a person squatting deep
-           with vertical torso.
-         - The leg line from hip to knee should slope DOWN-OUT toward knee
-           (which is at higher x), and from knee to ankle should slope
-           DOWN-IN toward ankle (which is back to x=100). That gives the
-           characteristic "knees forward, feet planted" look.
-         - Bell held at chest with elbows tucked close to body. Bell hand
-           y stays around 100-110 (chest height), not floating down. -->
+  <!-- Goblet Squat v4 — fixes from your manual:
+       - Bell stays AT CHEST throughout the movement (not floating down
+         to the belly). Hand y stays ~108-115.
+       - "Elbows inside knees" at bottom — we represent this by the
+         hand staying high even when hips are low.
+       - The depth is correct from v3, but the bell position was wrong. -->
   <animation id="goblet_squat" cycleMs="2400" loop="true">
     <pose t="0" label="stand">
       <joint name="head"    x="100" y="44"  />
@@ -20,32 +12,29 @@
       <joint name="hip"     x="100" y="140" />
       <joint name="knee"    x="100" y="188" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="92"  />
+      <joint name="hand"    x="100" y="100" />
     </pose>
-    <!-- Mid-descent: hips and shoulders drop together. Knees coming forward.
-         Torso leans forward slightly but stays mostly upright. -->
+    <!-- Mid-descent. Bell still at chest. -->
     <pose t="0.22" label="mid-descent">
       <joint name="head"    x="98"  y="86"  />
       <joint name="shoulder" x="99"  y="108" />
       <joint name="hip"     x="96"  y="180" />
       <joint name="knee"    x="116" y="210" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="114" />
+      <joint name="hand"    x="100" y="108" />
     </pose>
-    <!-- Bottom of squat: VERY DEEP. Hip y > knee y (hip is BELOW knee).
-         Knee pushed well forward of ankle so the shin angles forward.
-         Torso still mostly upright because of the counterweight.
-         The thigh/shin angle should be acute (less than 90°).
-         ViewBox is 280 tall, so hip at y=222, knee at y=210 — hip
-         is 12 units below the knee, with knee pushed to x=128
-         (well forward of the ankle at x=100). -->
+    <!-- Bottom of squat: deep. Bell STAYS at chest (hand y=112).
+         Hip below knee line. Knees forward of ankles.
+         Torso upright thanks to counterweight at chest.
+         Elbows would track inside knees (we approximate by
+         showing the hand still pinned to chest level). -->
     <pose t="0.42" label="bottom">
       <joint name="head"    x="94"  y="148" />
       <joint name="shoulder" x="96"  y="164" />
       <joint name="hip"     x="92"  y="222" />
       <joint name="knee"    x="128" y="210" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="160" />
+      <joint name="hand"    x="100" y="112" />
     </pose>
     <pose t="0.5" label="hold-bottom">
       <joint name="head"    x="94"  y="148" />
@@ -53,7 +42,7 @@
       <joint name="hip"     x="92"  y="222" />
       <joint name="knee"    x="128" y="210" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="160" />
+      <joint name="hand"    x="100" y="112" />
     </pose>
     <pose t="0.7" label="mid-ascent">
       <joint name="head"    x="98"  y="86"  />
@@ -61,7 +50,7 @@
       <joint name="hip"     x="96"  y="180" />
       <joint name="knee"    x="116" y="210" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="114" />
+      <joint name="hand"    x="100" y="108" />
     </pose>
     <pose t="0.95" label="near-stand">
       <joint name="head"    x="100" y="46"  />
@@ -69,7 +58,7 @@
       <joint name="hip"     x="100" y="142" />
       <joint name="knee"    x="100" y="190" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="94"  />
+      <joint name="hand"    x="100" y="102" />
     </pose>
   </animation>
 </svg>

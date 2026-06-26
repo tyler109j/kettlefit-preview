@@ -36,17 +36,16 @@
       <joint name="ankle"   x="100" y="248" />
       <joint name="hand"    x="100" y="232" />
     </pose>
-    <!-- Bottom: full stretch. Back is flat (line shoulder-hip roughly
-         parallel to the floor). Bell at mid-shin. Head is "looking at the
-         floor ahead" so it's slightly in front of ankles, but vertically
-         above the feet. Knee has the SAME slight bend it had throughout. -->
+    <!-- Bottom: full stretch. Back is flat. Bell at MID-SHIN (y=232,
+         not y=248). Per manual: "stop when hamstrings limit you
+         (before rounding)" — so bell hovers above the floor. -->
     <pose t="0.5" label="bottom">
       <joint name="head"    x="108" y="124" />
       <joint name="shoulder" x="106" y="142" />
       <joint name="hip"     x="96"  y="146" />
       <joint name="knee"    x="100" y="192" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="248" />
+      <joint name="hand"    x="100" y="218" />
     </pose>
     <!-- Hold. -->
     <pose t="0.6" label="hold">
@@ -55,7 +54,7 @@
       <joint name="hip"     x="96"  y="146" />
       <joint name="knee"    x="100" y="192" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="248" />
+      <joint name="hand"    x="100" y="218" />
     </pose>
     <pose t="0.75" label="mid-ascent">
       <joint name="head"    x="108" y="100" />

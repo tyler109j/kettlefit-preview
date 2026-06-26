@@ -9,33 +9,34 @@
        Previous bug: figure stayed standing the whole time and only the
        hand/bell moved. Real deadlift is ALL hip hinge. -->
   <animation id="kb_deadlift" cycleMs="2600" loop="true">
-    <!-- Floor position: deep hinge. Hips are HIGH (not as low as a squat),
-         torso angled ~70° from vertical. Knees bent, bell on floor. -->
+    <!-- Floor position: deep hinge. Bell CENTERED between feet at
+         midfoot (x=100, same as ankle). Per manual: "bell between
+         feet around midfoot/arches" — so bell x = ankle x = 100. -->
     <pose t="0" label="floor">
       <joint name="head"    x="118" y="118" />
       <joint name="shoulder" x="115" y="142" />
       <joint name="hip"     x="100" y="160" />
-      <joint name="knee"    x="108" y="208" />
+      <joint name="knee"    x="103" y="208" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="108" y="252" />
+      <joint name="hand"    x="100" y="252" />
     </pose>
-    <!-- Bell just off floor, hinge still deep. -->
+    <!-- Bell just off floor. -->
     <pose t="0.18" label="off-floor">
       <joint name="head"    x="118" y="116" />
       <joint name="shoulder" x="115" y="140" />
       <joint name="hip"     x="100" y="158" />
-      <joint name="knee"    x="106" y="206" />
+      <joint name="knee"    x="103" y="206" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="108" y="240" />
+      <joint name="hand"    x="100" y="240" />
     </pose>
-    <!-- Pass knee: bell at knee height, torso still angled, hips rising. -->
+    <!-- Pass knee: bell at knee height. -->
     <pose t="0.38" label="pass-knee">
       <joint name="head"    x="110" y="86"  />
       <joint name="shoulder" x="108" y="112" />
       <joint name="hip"     x="100" y="148" />
       <joint name="knee"    x="102" y="194" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="105" y="200" />
+      <joint name="hand"    x="100" y="200" />
     </pose>
     <!-- Lockout: hips extended, standing tall, bell hangs at sides. -->
     <pose t="0.5" label="lockout">
@@ -62,16 +63,16 @@
       <joint name="hip"     x="100" y="148" />
       <joint name="knee"    x="102" y="194" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="105" y="200" />
+      <joint name="hand"    x="100" y="200" />
     </pose>
     <!-- Near floor. -->
     <pose t="0.92" label="near-floor">
       <joint name="head"    x="118" y="118" />
       <joint name="shoulder" x="115" y="142" />
       <joint name="hip"     x="100" y="160" />
-      <joint name="knee"    x="108" y="208" />
+      <joint name="knee"    x="103" y="208" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="108" y="248" />
+      <joint name="hand"    x="100" y="248" />
     </pose>
   </animation>
 </svg>

@@ -38,16 +38,16 @@
       <joint name="ankle"   x="100" y="248" />
       <joint name="hand"    x="108" y="118" />
     </pose>
-    <!-- Rack: bell at shoulder, elbow tucked. Hand moves inward toward midline
-         (we approximate this by hand x ~ 92, since the elbow wraps around to
-         tuck the bell against the forearm). -->
+    <!-- Rack: bell at shoulder, elbow tucked. For a RIGHT-arm rack the
+         hand sits slightly RIGHT of center (x=108), with the bell
+         resting on the back of the forearm against the shoulder. -->
     <pose t="0.5" label="rack">
       <joint name="head"    x="100" y="44"  />
       <joint name="shoulder" x="100" y="74"  />
       <joint name="hip"     x="100" y="130" />
       <joint name="knee"    x="100" y="178" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="92"  y="92"  />
+      <joint name="hand"    x="108" y="92"  />
     </pose>
     <!-- Hold rack briefly. -->
     <pose t="0.62" label="rack-hold">
@@ -56,7 +56,7 @@
       <joint name="hip"     x="100" y="130" />
       <joint name="knee"    x="100" y="178" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="92"  y="92"  />
+      <joint name="hand"    x="108" y="92"  />
     </pose>
     <!-- Drop: bell arcs back down. Hips hinging. -->
     <pose t="0.78" label="drop">
