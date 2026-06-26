@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <!-- Kettlebell Snatch — single continuous motion to overhead lockout.
+       ~2.0s/rep. Punch-through at the top. -->
+  <animation id="kb_snatch" cycleMs="2000" loop="true">
+    <pose t="0" label="hike">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="135" />
+      <joint name="knee"    x="100" y="180" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="135" y="225" />
+    </pose>
+    <pose t="0.35" label="arc-up">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="130" />
+      <joint name="knee"    x="100" y="168" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="110" y="100" />
+    </pose>
+    <pose t="0.55" label="overhead-lockout">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="130" />
+      <joint name="knee"    x="100" y="168" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="36"  />
+    </pose>
+    <pose t="0.75" label="drop-start">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="130" />
+      <joint name="knee"    x="100" y="168" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="80"  />
+    </pose>
+    <pose t="0.95" label="re-hike">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="135" />
+      <joint name="knee"    x="100" y="180" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="138" y="222" />
+    </pose>
+  </animation>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <!-- Kettlebell Clean — swing up, redirect under the body, catch in rack.
+       ~2.2s/rep. Joints include wrist (separate from hand) for the catch. -->
+  <animation id="kb_clean_single" cycleMs="2200" loop="true">
+    <pose t="0" label="hike">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="135" />
+      <joint name="knee"    x="100" y="180" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="135" y="225" />
+    </pose>
+    <pose t="0.3" label="upward-arc">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="130" />
+      <joint name="knee"    x="100" y="168" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="112" y="105" />
+    </pose>
+    <pose t="0.5" label="catch-rack">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="130" />
+      <joint name="knee"    x="100" y="166" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="92"  y="92"  />
+    </pose>
+    <pose t="0.7" label="rack-hold">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="135" />
+      <joint name="knee"    x="100" y="188" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="92"  y="92"  />
+    </pose>
+    <pose t="0.9" label="drop-arc">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="135" />
+      <joint name="knee"    x="100" y="180" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="120" y="155" />
+    </pose>
+  </animation>
+</svg>

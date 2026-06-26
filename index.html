@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KettleFit — Animation Demos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { padding: 18px 16px 80px; max-width: 760px; margin: 0 auto; }
+    .demo-row {
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+      margin-bottom: 24px;
+    }
+    .demo-cell {
+      flex: 1 1 200px; max-width: 240px;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 8px;
+    }
+    .demo-cell .card { width: 100%; padding: 12px; margin: 0; }
+    .demo-cell h3 { font-size: 0.95rem; text-align: center; margin: 0; }
+    .demo-cell .meta { font-size: 0.78rem; color: var(--muted); text-align: center; }
+    h1 { margin-bottom: 8px; }
+    .intro { color: var(--muted); margin-bottom: 24px; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <h1>Animation demos</h1>
+  <p class="intro">
+    Live previews of the 7 stick-figure movement animations. Each one loops at the
+    real-time cadence of the movement (swing ~2.0s/rep, getup ~8.0s). The orange
+    trail shows the bell's recent path.
+  </p>
+  <div class="demo-row" id="demos"></div>
+
+  <script type="module">
+    import Anim from './animations.js';
+
+    const EXERCISES = [
+      { id: 'kb_swing',          name: 'Kettlebell Swing',     pace: '~2.0s/rep · ballistic' },
+      { id: 'goblet_squat',      name: 'Goblet Squat',          pace: '~2.4s/rep · controlled' },
+      { id: 'kb_deadlift',       name: 'Kettlebell Deadlift',   pace: '~2.6s/rep · grind' },
+      { id: 'kb_rdl',            name: 'Romanian Deadlift',     pace: '~2.6s/rep · hip hinge' },
+      { id: 'kb_turkish_getup',  name: 'Turkish Get-Up',        pace: '~8.0s/rep · full sequence' },
+      { id: 'kb_clean_single',   name: 'Single Clean',          pace: '~2.2s/rep · catch in rack' },
+      { id: 'kb_snatch',         name: 'Kettlebell Snatch',     pace: '~2.0s/rep · to overhead' },
+    ];
+
+    const root = document.getElementById('demos');
+    for (const ex of EXERCISES) {
+      const cell = document.createElement('div');
+      cell.className = 'demo-cell';
+      const card = document.createElement('div');
+      card.className = 'card';
+      cell.appendChild(card);
+      const h = document.createElement('h3');
+      h.textContent = ex.name;
+      cell.appendChild(h);
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.textContent = ex.pace;
+      cell.appendChild(meta);
+      root.appendChild(cell);
+      if (Anim.has(ex.id)) {
+        Anim.start(card, ex.id);
+      }
+    }
+  </script>
+</body>
+</html>

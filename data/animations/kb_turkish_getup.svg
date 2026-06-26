@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <!-- Turkish Get-up — full body sequence, ~8.0s/rep (one full get-up).
+       Joints: head, shoulder, hip, knee, ankle, hand (bell overhead).
+       Phases: lie -> roll to elbow -> sit tall -> lunge -> stand -> reverse. -->
+  <animation id="kb_turkish_getup" cycleMs="8000" loop="true">
+    <pose t="0"    label="lie-flat">
+      <joint name="head"    x="58"  y="208" />
+      <joint name="shoulder" x="92"  y="200" />
+      <joint name="hip"     x="130" y="195" />
+      <joint name="knee"    x="160" y="215" />
+      <joint name="ankle"   x="172" y="240" />
+      <joint name="hand"    x="78"  y="118" />
+    </pose>
+    <pose t="0.18" label="elbow">
+      <joint name="head"    x="68"  y="190" />
+      <joint name="shoulder" x="98"  y="186" />
+      <joint name="hip"     x="132" y="192" />
+      <joint name="knee"    x="158" y="214" />
+      <joint name="ankle"   x="172" y="240" />
+      <joint name="hand"    x="86"  y="120" />
+    </pose>
+    <pose t="0.34" label="seated">
+      <joint name="head"    x="92"  y="120" />
+      <joint name="shoulder" x="102" y="148" />
+      <joint name="hip"     x="120" y="200" />
+      <joint name="knee"    x="146" y="220" />
+      <joint name="ankle"   x="168" y="244" />
+      <joint name="hand"    x="92"  y="78"  />
+    </pose>
+    <pose t="0.5"  label="hight-bridge">
+      <joint name="head"    x="86"  y="138" />
+      <joint name="shoulder" x="100" y="160" />
+      <joint name="hip"     x="120" y="195" />
+      <joint name="knee"    x="128" y="218" />
+      <joint name="ankle"   x="148" y="244" />
+      <joint name="hand"    x="86"  y="74"  />
+    </pose>
+    <pose t="0.66" label="kneel">
+      <joint name="head"    x="100" y="74"  />
+      <joint name="shoulder" x="102" y="104" />
+      <joint name="hip"     x="108" y="160" />
+      <joint name="knee"    x="120" y="220" />
+      <joint name="ankle"   x="124" y="248" />
+      <joint name="hand"    x="92"  y="48"  />
+    </pose>
+    <pose t="0.82" label="lunge">
+      <joint name="head"    x="100" y="48"  />
+      <joint name="shoulder" x="102" y="78"  />
+      <joint name="hip"     x="106" y="138" />
+      <joint name="knee"    x="116" y="194" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="92"  y="36"  />
+    </pose>
+    <pose t="1.0"  label="stand">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="135" />
+      <joint name="knee"    x="100" y="188" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="44"  />
+    </pose>
+  </animation>
+</svg>

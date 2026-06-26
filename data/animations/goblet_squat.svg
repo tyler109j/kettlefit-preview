@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <!-- Goblet Squat — bell held at chest, ~2.4s/rep
+       Joints: head, shoulder, hip, knee, ankle, hand (bell at chest).
+       Movement: stand -> deep squat -> stand. -->
+  <animation id="goblet_squat" cycleMs="2400" loop="true">
+    <pose t="0" label="stand">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="140" />
+      <joint name="knee"    x="100" y="190" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="90"  />
+    </pose>
+    <pose t="0.25" label="descent">
+      <joint name="head"    x="100" y="58"  />
+      <joint name="shoulder" x="100" y="88"  />
+      <joint name="hip"     x="92"  y="170" />
+      <joint name="knee"    x="86"  y="205" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="100" />
+    </pose>
+    <pose t="0.5" label="bottom">
+      <joint name="head"    x="100" y="92"  />
+      <joint name="shoulder" x="100" y="120" />
+      <joint name="hip"     x="84"  y="200" />
+      <joint name="knee"    x="74"  y="222" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="132" />
+    </pose>
+    <pose t="0.75" label="ascent">
+      <joint name="head"    x="100" y="58"  />
+      <joint name="shoulder" x="100" y="88"  />
+      <joint name="hip"     x="92"  y="170" />
+      <joint name="knee"    x="86"  y="205" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="100" />
+    </pose>
+  </animation>
+</svg>

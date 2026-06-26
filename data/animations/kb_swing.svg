@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <!-- Kettlebell Swing — ballistic hip-hinge, ~2.0s/rep
+       Joints: head, shoulder, hip, knee, ankle, hand (bell).
+       Movement: hike pass through legs -> standing plank at top, arms "ropes". -->
+  <animation id="kb_swing" cycleMs="2000" loop="true">
+    <pose t="0" label="hike">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="135" />
+      <joint name="knee"    x="100" y="180" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="135" y="225" />
+    </pose>
+    <pose t="0.18" label="backswing">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="138" />
+      <joint name="knee"    x="103" y="178" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="148" y="218" />
+    </pose>
+    <pose t="0.45" label="float-up">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="135" />
+      <joint name="knee"    x="100" y="172" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="115" y="118" />
+    </pose>
+    <pose t="0.5" label="top">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="130" />
+      <joint name="knee"    x="100" y="168" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="92"  />
+    </pose>
+    <pose t="0.7" label="descent">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="132" />
+      <joint name="knee"    x="100" y="170" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="118" y="135" />
+    </pose>
+    <pose t="0.95" label="re-hike">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="137" />
+      <joint name="knee"    x="100" y="180" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="142" y="222" />
+    </pose>
+  </animation>
+</svg>
