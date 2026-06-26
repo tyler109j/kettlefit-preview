@@ -1,46 +1,87 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
-  <!-- Kettlebell Snatch — single continuous motion to overhead lockout.
-       ~2.0s/rep. Punch-through at the top. -->
-  <animation id="kb_snatch" cycleMs="2000" loop="true">
+  <!-- KB Snatch v2 — hike, swing, redirect all the way to overhead lockout.
+       Real snatch: similar to clean but the bell goes OVERHEAD instead of
+       stopping at the rack. At the top, the bell rotates around the wrist so
+       the body ends up behind the wrist (knuckles up). The punch-through is
+       critical: bell goes UP and the body rotates AROUND the hand.
+       Sequence:
+         - Hike (hinged)
+         - Hip drive
+         - Float up
+         - Punch through: hand goes overhead, arm straight
+         - Lockout: standing tall, bell overhead, arm vertical
+         - Drop: bell arcs back down. -->
+  <animation id="kb_snatch" cycleMs="2200" loop="true">
+    <!-- Hike. -->
     <pose t="0" label="hike">
-      <joint name="head"    x="100" y="44"  />
-      <joint name="shoulder" x="100" y="74"  />
-      <joint name="hip"     x="100" y="135" />
-      <joint name="knee"    x="100" y="180" />
+      <joint name="head"    x="120" y="92"  />
+      <joint name="shoulder" x="115" y="118" />
+      <joint name="hip"     x="100" y="138" />
+      <joint name="knee"    x="103" y="184" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="135" y="225" />
+      <joint name="hand"    x="115" y="222" />
     </pose>
-    <pose t="0.35" label="arc-up">
+    <!-- Hip drive. -->
+    <pose t="0.22" label="hip-drive">
+      <joint name="head"    x="114" y="74"  />
+      <joint name="shoulder" x="110" y="100" />
+      <joint name="hip"     x="100" y="134" />
+      <joint name="knee"    x="101" y="180" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="112" y="170" />
+    </pose>
+    <!-- Float up out of legs. -->
+    <pose t="0.4" label="float">
+      <joint name="head"    x="106" y="56"  />
+      <joint name="shoulder" x="104" y="82"  />
+      <joint name="hip"     x="100" y="132" />
+      <joint name="knee"    x="100" y="178" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="108" y="118" />
+    </pose>
+    <!-- Punch through: hand going overhead. -->
+    <pose t="0.5" label="punch">
+      <joint name="head"    x="100" y="48"  />
+      <joint name="shoulder" x="100" y="76"  />
+      <joint name="hip"     x="100" y="130" />
+      <joint name="knee"    x="100" y="178" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="58"  />
+    </pose>
+    <!-- Lockout. -->
+    <pose t="0.55" label="lockout">
       <joint name="head"    x="100" y="44"  />
       <joint name="shoulder" x="100" y="74"  />
       <joint name="hip"     x="100" y="130" />
-      <joint name="knee"    x="100" y="168" />
+      <joint name="knee"    x="100" y="178" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="110" y="100" />
+      <joint name="hand"    x="100" y="34"  />
     </pose>
-    <pose t="0.55" label="overhead-lockout">
+    <!-- Hold at top briefly. -->
+    <pose t="0.66" label="hold-top">
       <joint name="head"    x="100" y="44"  />
       <joint name="shoulder" x="100" y="74"  />
       <joint name="hip"     x="100" y="130" />
-      <joint name="knee"    x="100" y="168" />
+      <joint name="knee"    x="100" y="178" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="36"  />
+      <joint name="hand"    x="100" y="34"  />
     </pose>
-    <pose t="0.75" label="drop-start">
-      <joint name="head"    x="100" y="44"  />
-      <joint name="shoulder" x="100" y="74"  />
-      <joint name="hip"     x="100" y="130" />
-      <joint name="knee"    x="100" y="168" />
+    <!-- Drop. -->
+    <pose t="0.82" label="drop">
+      <joint name="head"    x="108" y="64"  />
+      <joint name="shoulder" x="105" y="88"  />
+      <joint name="hip"     x="100" y="134" />
+      <joint name="knee"    x="100" y="182" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="80"  />
+      <joint name="hand"    x="115" y="155" />
     </pose>
     <pose t="0.95" label="re-hike">
-      <joint name="head"    x="100" y="44"  />
-      <joint name="shoulder" x="100" y="74"  />
-      <joint name="hip"     x="100" y="135" />
-      <joint name="knee"    x="100" y="180" />
+      <joint name="head"    x="120" y="92"  />
+      <joint name="shoulder" x="115" y="118" />
+      <joint name="hip"     x="100" y="138" />
+      <joint name="knee"    x="103" y="184" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="138" y="222" />
+      <joint name="hand"    x="118" y="222" />
     </pose>
   </animation>
 </svg>

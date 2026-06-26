@@ -1,23 +1,77 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
-  <!-- Romanian Deadlift — minimal knee bend, ~2.6s/rep
-       Joints: head, shoulder, hip, knee, ankle, hand (bell tracks down leg).
-       Movement: stand -> hip hinge w/ slight knee bend -> stand. -->
+  <!-- RDL v3 — clean hip hinge geometry, head tracks over feet at bottom.
+       Key fixes from v2:
+         - Bottom pose: head stays roughly above the ankle/feet (x=100),
+           not floating off to the side at x=122. Hinge pivots around hips,
+           but head is "down" not "sideways".
+         - Knees only slightly bent (y=192 throughout, vs the knee being
+           deep at 196 in v2). The defining feature of RDL is minimal knee
+           bend.
+         - Bell tracks straight down the front of legs, close to body
+           (hand x stays around 100, vertical alignment). -->
   <animation id="kb_rdl" cycleMs="2600" loop="true">
     <pose t="0" label="stand">
       <joint name="head"    x="100" y="44"  />
       <joint name="shoulder" x="100" y="74"  />
-      <joint name="hip"     x="100" y="135" />
-      <joint name="knee"    x="100" y="188" />
+      <joint name="hip"     x="100" y="138" />
+      <joint name="knee"    x="100" y="190" />
       <joint name="ankle"   x="100" y="248" />
       <joint name="hand"    x="100" y="200" />
     </pose>
-    <pose t="0.5" label="bottom">
-      <joint name="head"    x="100" y="92"  />
-      <joint name="shoulder" x="100" y="122" />
-      <joint name="hip"     x="108" y="170" />
-      <joint name="knee"    x="104" y="195" />
+    <!-- Slight hinge starting. Hips push back. -->
+    <pose t="0.2" label="early-hinge">
+      <joint name="head"    x="105" y="68"  />
+      <joint name="shoulder" x="103" y="92"  />
+      <joint name="hip"     x="98"  y="140" />
+      <joint name="knee"    x="100" y="190" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="120" y="248" />
+      <joint name="hand"    x="100" y="218" />
+    </pose>
+    <!-- Mid-descent. -->
+    <pose t="0.4" label="mid-descent">
+      <joint name="head"    x="108" y="100" />
+      <joint name="shoulder" x="106" y="120" />
+      <joint name="hip"     x="96"  y="142" />
+      <joint name="knee"    x="100" y="190" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="232" />
+    </pose>
+    <!-- Bottom: full stretch. Back is flat (line shoulder-hip roughly
+         parallel to the floor). Bell at mid-shin. Head is "looking at the
+         floor ahead" so it's slightly in front of ankles, but vertically
+         above the feet. Knee has the SAME slight bend it had throughout. -->
+    <pose t="0.5" label="bottom">
+      <joint name="head"    x="108" y="124" />
+      <joint name="shoulder" x="106" y="142" />
+      <joint name="hip"     x="96"  y="146" />
+      <joint name="knee"    x="100" y="192" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="248" />
+    </pose>
+    <!-- Hold. -->
+    <pose t="0.6" label="hold">
+      <joint name="head"    x="108" y="124" />
+      <joint name="shoulder" x="106" y="142" />
+      <joint name="hip"     x="96"  y="146" />
+      <joint name="knee"    x="100" y="192" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="248" />
+    </pose>
+    <pose t="0.75" label="mid-ascent">
+      <joint name="head"    x="108" y="100" />
+      <joint name="shoulder" x="106" y="120" />
+      <joint name="hip"     x="96"  y="142" />
+      <joint name="knee"    x="100" y="190" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="232" />
+    </pose>
+    <pose t="0.92" label="near-stand">
+      <joint name="head"    x="105" y="68"  />
+      <joint name="shoulder" x="103" y="92"  />
+      <joint name="hip"     x="98"  y="140" />
+      <joint name="knee"    x="100" y="190" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="100" y="218" />
     </pose>
   </animation>
 </svg>

@@ -1,63 +1,110 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
-  <!-- Turkish Get-up — full body sequence, ~8.0s/rep (one full get-up).
-       Joints: head, shoulder, hip, knee, ankle, hand (bell overhead).
-       Phases: lie -> roll to elbow -> sit tall -> lunge -> stand -> reverse. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 280" width="320" height="280">
+  <!-- Turkish Get-up v3 — proper side-view progression from floor to standing.
+       Key design choice: this is a SIDE VIEW. The body pivots as a rigid
+       shape from horizontal to vertical, with one leg acting as a fulcrum.
+
+       Coordinate convention in viewBox 0,0,320,280:
+         - "Y=240" = floor (ankle/rest position)
+         - "Y=80" = standing head height
+         - The figure starts LYING HORIZONTALLY and rotates.
+
+       Joint remapping for side-view of a person LYING ON THEIR BACK:
+         head = head (lying = far left or far right end)
+         shoulder = shoulder (same end as head)
+         hip = hip (middle of body when lying)
+         knee = the BENT KNEE which points UP when lying (one knee bent,
+                foot near hip). So when lying, knee is high in the viewBox
+                (small y) — that's the bent knee pointing up.
+         ankle = the foot of the BENT LEG, planted on floor near hip
+         hand = bell, LOCKED OUT PERPENDICULAR to body (so when lying,
+                hand is directly above shoulder at small y).
+
+       Phase progression:
+         1. Lying flat — body horizontal, head at far left, hips middle,
+            bell overhead (hand above shoulder).
+         2. Roll to elbow — body pivots up slightly. Hips rise.
+         3. Sit tall — propped on one hand. Torso nearly vertical.
+            Back leg still extended on floor.
+         4. Half-kneel — front leg bent under (knee on floor in front),
+            back leg folded behind. Torso fully upright.
+         5. Kneel upright — same position but free hand is off floor.
+         6. Lunge up — front foot planted, back knee lifting off floor.
+         7. Stand — fully upright. Bell overhead. -->
   <animation id="kb_turkish_getup" cycleMs="8000" loop="true">
-    <pose t="0"    label="lie-flat">
-      <joint name="head"    x="58"  y="208" />
+    <!-- 1. Lying flat. Body horizontal from x=40 to x=260 at y=232.
+         Head at far left (x=46). Hip at middle (x=160).
+         One knee bent up — bent knee y=180 (small, meaning UP visually).
+         Foot of bent leg at x=180, y=232 (planted near hip).
+         Bell locked out: hand at x=78, y=140 (directly above shoulder). -->
+    <pose t="0" label="lie-flat">
+      <joint name="head"    x="46"  y="232" />
+      <joint name="shoulder" x="78"  y="232" />
+      <joint name="hip"     x="160" y="232" />
+      <joint name="knee"    x="180" y="170" />
+      <joint name="ankle"   x="180" y="232" />
+      <joint name="hand"    x="78"  y="140" />
+    </pose>
+    <!-- 2. Rolled to elbow. Body angled up from floor. Head and shoulder
+         lifted. Hip rising. Bent knee still up. Bell still overhead
+         relative to torso. -->
+    <pose t="0.18" label="on-elbow">
+      <joint name="head"    x="60"  y="200" />
       <joint name="shoulder" x="92"  y="200" />
-      <joint name="hip"     x="130" y="195" />
-      <joint name="knee"    x="160" y="215" />
-      <joint name="ankle"   x="172" y="240" />
-      <joint name="hand"    x="78"  y="118" />
+      <joint name="hip"     x="180" y="212" />
+      <joint name="knee"    x="200" y="148" />
+      <joint name="ankle"   x="200" y="212" />
+      <joint name="hand"    x="92"  y="108" />
     </pose>
-    <pose t="0.18" label="elbow">
-      <joint name="head"    x="68"  y="190" />
-      <joint name="shoulder" x="98"  y="186" />
-      <joint name="hip"     x="132" y="192" />
-      <joint name="knee"    x="158" y="214" />
-      <joint name="ankle"   x="172" y="240" />
-      <joint name="hand"    x="86"  y="120" />
+    <!-- 3. Sit tall. Propped on one hand. Torso nearly vertical.
+         Hip is the pivot. Bent leg still up but body is now mostly upright.
+         The "back leg" (the straight one) is folded underneath out of sight. -->
+    <pose t="0.36" label="sit-tall">
+      <joint name="head"    x="92"  y="138" />
+      <joint name="shoulder" x="110" y="158" />
+      <joint name="hip"     x="170" y="220" />
+      <joint name="knee"    x="180" y="160" />
+      <joint name="ankle"   x="180" y="220" />
+      <joint name="hand"    x="110" y="68"  />
     </pose>
-    <pose t="0.34" label="seated">
-      <joint name="head"    x="92"  y="120" />
-      <joint name="shoulder" x="102" y="148" />
-      <joint name="hip"     x="120" y="200" />
-      <joint name="knee"    x="146" y="220" />
-      <joint name="ankle"   x="168" y="244" />
-      <joint name="hand"    x="92"  y="78"  />
+    <!-- 4. Half-kneel. Front knee on floor (bent knee now down to floor in
+         front), back leg folded with knee on floor behind. Torso upright.
+         Free hand lifts off floor (we don't draw the supporting hand). -->
+    <pose t="0.52" label="half-kneel">
+      <joint name="head"    x="100" y="98"  />
+      <joint name="shoulder" x="112" y="120" />
+      <joint name="hip"     x="140" y="190" />
+      <joint name="knee"    x="148" y="232" />
+      <joint name="ankle"   x="210" y="232" />
+      <joint name="hand"    x="112" y="56"  />
     </pose>
-    <pose t="0.5"  label="hight-bridge">
-      <joint name="head"    x="86"  y="138" />
-      <joint name="shoulder" x="100" y="160" />
-      <joint name="hip"     x="120" y="195" />
-      <joint name="knee"    x="128" y="218" />
-      <joint name="ankle"   x="148" y="244" />
-      <joint name="hand"    x="86"  y="74"  />
+    <!-- 5. Kneel upright. Same position, free hand off floor.
+         (Same coords as half-kneel; this is the transition beat.) -->
+    <pose t="0.66" label="kneel-up">
+      <joint name="head"    x="100" y="98"  />
+      <joint name="shoulder" x="112" y="120" />
+      <joint name="hip"     x="140" y="190" />
+      <joint name="knee"    x="148" y="232" />
+      <joint name="ankle"   x="210" y="232" />
+      <joint name="hand"    x="112" y="56"  />
     </pose>
-    <pose t="0.66" label="kneel">
-      <joint name="head"    x="100" y="74"  />
-      <joint name="shoulder" x="102" y="104" />
-      <joint name="hip"     x="108" y="160" />
-      <joint name="knee"    x="120" y="220" />
-      <joint name="ankle"   x="124" y="248" />
-      <joint name="hand"    x="92"  y="48"  />
+    <!-- 6. Lunge up. Front foot planted (knee lifting), back leg straight
+         behind. Coming up to standing. -->
+    <pose t="0.82" label="lunge-up">
+      <joint name="head"    x="108" y="60"  />
+      <joint name="shoulder" x="118" y="84"  />
+      <joint name="hip"     x="138" y="148" />
+      <joint name="knee"    x="148" y="208" />
+      <joint name="ankle"   x="180" y="248" />
+      <joint name="hand"    x="118" y="32"  />
     </pose>
-    <pose t="0.82" label="lunge">
-      <joint name="head"    x="100" y="48"  />
-      <joint name="shoulder" x="102" y="78"  />
-      <joint name="hip"     x="106" y="138" />
-      <joint name="knee"    x="116" y="194" />
-      <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="92"  y="36"  />
-    </pose>
-    <pose t="1.0"  label="stand">
-      <joint name="head"    x="100" y="44"  />
-      <joint name="shoulder" x="100" y="74"  />
-      <joint name="hip"     x="100" y="135" />
-      <joint name="knee"    x="100" y="188" />
-      <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="44"  />
+    <!-- 7. Standing tall. Bell overhead. -->
+    <pose t="1.0" label="stand">
+      <joint name="head"    x="110" y="44"  />
+      <joint name="shoulder" x="118" y="74"  />
+      <joint name="hip"     x="130" y="138" />
+      <joint name="knee"    x="138" y="194" />
+      <joint name="ankle"   x="140" y="248" />
+      <joint name="hand"    x="113" y="26"  />
     </pose>
   </animation>
 </svg>

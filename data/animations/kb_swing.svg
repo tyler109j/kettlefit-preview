@@ -1,55 +1,91 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
-  <!-- Kettlebell Swing — ballistic hip-hinge, ~2.0s/rep
-       Joints: head, shoulder, hip, knee, ankle, hand (bell).
-       Movement: hike pass through legs -> standing plank at top, arms "ropes". -->
+  <!-- KB Swing v2 — real hip hinge mechanics.
+       Key insight: the torso PIVOTS at the hips. Hips stay near (100, ~135),
+       shoulders and head swing forward/back as a unit hinged at the hip.
+       Arms are "ropes" — straight from shoulder to bell, no elbow bend.
+       Knees barely change angle.
+       Coordinate plan:
+         head at apex of torso angle (shifts forward as torso hinges)
+         shoulder = neck base
+         hip = pivot (fixed ~100,135 ish)
+         knee = slightly bent, ~100,185
+         ankle = fixed at ~100,248
+         hand = bell position; always on the line from shoulder straight down -->
   <animation id="kb_swing" cycleMs="2000" loop="true">
+    <!-- Hike: full hinge. Torso angled ~50° from vertical. -->
     <pose t="0" label="hike">
-      <joint name="head"    x="100" y="44"  />
-      <joint name="shoulder" x="100" y="74"  />
-      <joint name="hip"     x="100" y="135" />
-      <joint name="knee"    x="100" y="180" />
-      <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="135" y="225" />
-    </pose>
-    <pose t="0.18" label="backswing">
-      <joint name="head"    x="100" y="44"  />
-      <joint name="shoulder" x="100" y="74"  />
+      <joint name="head"    x="120" y="92"  />
+      <joint name="shoulder" x="115" y="118" />
       <joint name="hip"     x="100" y="138" />
-      <joint name="knee"    x="103" y="178" />
+      <joint name="knee"    x="103" y="184" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="148" y="218" />
+      <joint name="hand"    x="115" y="222" />
     </pose>
-    <pose t="0.45" label="float-up">
-      <joint name="head"    x="100" y="44"  />
-      <joint name="shoulder" x="100" y="74"  />
+    <!-- Backswing: bell at peak behind. Torso still hinged. -->
+    <pose t="0.15" label="backswing">
+      <joint name="head"    x="125" y="92"  />
+      <joint name="shoulder" x="120" y="118" />
+      <joint name="hip"     x="100" y="138" />
+      <joint name="knee"    x="103" y="184" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="140" y="218" />
+    </pose>
+    <!-- Power position: torso starting to rise. Bell accelerating forward. -->
+    <pose t="0.32" label="power">
+      <joint name="head"    x="118" y="80"  />
+      <joint name="shoulder" x="113" y="106" />
       <joint name="hip"     x="100" y="135" />
-      <joint name="knee"    x="100" y="172" />
+      <joint name="knee"    x="101" y="180" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="115" y="118" />
+      <joint name="hand"    x="118" y="155" />
     </pose>
+    <!-- Float up: bell rising to chest. Hips almost extended.
+         Arms reaching forward, not pinned to chest. -->
+    <pose t="0.46" label="float-up">
+      <joint name="head"    x="110" y="58"  />
+      <joint name="shoulder" x="106" y="86"  />
+      <joint name="hip"     x="100" y="132" />
+      <joint name="knee"    x="100" y="178" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="138" y="115" />
+    </pose>
+    <!-- Top/plank: full lockout. Standing tall. Arms straight out in front
+         of the body (NOT pinned to chest) — they're "ropes" reaching forward
+         from the shoulder. Bell floats out at chest height. -->
     <pose t="0.5" label="top">
       <joint name="head"    x="100" y="44"  />
       <joint name="shoulder" x="100" y="74"  />
       <joint name="hip"     x="100" y="130" />
-      <joint name="knee"    x="100" y="168" />
+      <joint name="knee"    x="100" y="178" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="92"  />
+      <joint name="hand"    x="140" y="100" />
     </pose>
-    <pose t="0.7" label="descent">
-      <joint name="head"    x="100" y="44"  />
-      <joint name="shoulder" x="100" y="74"  />
+    <!-- Descent: bell arcs down. Arms forward then start coming down. -->
+    <pose t="0.65" label="descent">
+      <joint name="head"    x="108" y="60"  />
+      <joint name="shoulder" x="105" y="88"  />
       <joint name="hip"     x="100" y="132" />
-      <joint name="knee"    x="100" y="170" />
-      <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="118" y="135" />
-    </pose>
-    <pose t="0.95" label="re-hike">
-      <joint name="head"    x="100" y="44"  />
-      <joint name="shoulder" x="100" y="74"  />
-      <joint name="hip"     x="100" y="137" />
       <joint name="knee"    x="100" y="180" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="142" y="222" />
+      <joint name="hand"    x="130" y="140" />
+    </pose>
+    <!-- Loading: bell passing through legs, hinge deepening. -->
+    <pose t="0.82" label="loading">
+      <joint name="head"    x="115" y="78"  />
+      <joint name="shoulder" x="110" y="104" />
+      <joint name="hip"     x="100" y="135" />
+      <joint name="knee"    x="101" y="182" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="120" y="195" />
+    </pose>
+    <!-- Re-hike: bell back to start position. -->
+    <pose t="0.95" label="re-hike">
+      <joint name="head"    x="120" y="92"  />
+      <joint name="shoulder" x="115" y="118" />
+      <joint name="hip"     x="100" y="138" />
+      <joint name="knee"    x="103" y="184" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="118" y="220" />
     </pose>
   </animation>
 </svg>

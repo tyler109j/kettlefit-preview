@@ -1,39 +1,77 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
-  <!-- Kettlebell Deadlift — bell on floor between feet, ~2.6s/rep
-       Joints: head, shoulder, hip, knee, ankle, hand (bell at floor).
-       Movement: floor -> standing plank -> floor. -->
+  <!-- KB Deadlift v2 — hinge mechanics, bell on floor at start.
+       Real deadlift:
+         - Floor: hinged over, hips HIGH (not deep squat), bell between feet,
+           arms straight down to bell, neutral spine, knees bent ~45deg.
+         - Pass knee: bell rises past knees, hips still hinged but rising.
+         - Lockout: hips fully extended, bell hanging at sides, standing tall.
+         - Reverse: lower with hip hinge, knees bend as bell approaches floor.
+       Previous bug: figure stayed standing the whole time and only the
+       hand/bell moved. Real deadlift is ALL hip hinge. -->
   <animation id="kb_deadlift" cycleMs="2600" loop="true">
+    <!-- Floor position: deep hinge. Hips are HIGH (not as low as a squat),
+         torso angled ~70° from vertical. Knees bent, bell on floor. -->
     <pose t="0" label="floor">
-      <joint name="head"    x="100" y="110" />
-      <joint name="shoulder" x="100" y="140" />
-      <joint name="hip"     x="100" y="170" />
-      <joint name="knee"    x="106" y="200" />
+      <joint name="head"    x="118" y="118" />
+      <joint name="shoulder" x="115" y="142" />
+      <joint name="hip"     x="100" y="160" />
+      <joint name="knee"    x="108" y="208" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="252" />
+      <joint name="hand"    x="108" y="252" />
     </pose>
-    <pose t="0.25" label="pass-knee">
-      <joint name="head"    x="100" y="78"  />
-      <joint name="shoulder" x="100" y="108" />
-      <joint name="hip"     x="100" y="155" />
-      <joint name="knee"    x="103" y="190" />
+    <!-- Bell just off floor, hinge still deep. -->
+    <pose t="0.18" label="off-floor">
+      <joint name="head"    x="118" y="116" />
+      <joint name="shoulder" x="115" y="140" />
+      <joint name="hip"     x="100" y="158" />
+      <joint name="knee"    x="106" y="206" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="220" />
+      <joint name="hand"    x="108" y="240" />
     </pose>
+    <!-- Pass knee: bell at knee height, torso still angled, hips rising. -->
+    <pose t="0.38" label="pass-knee">
+      <joint name="head"    x="110" y="86"  />
+      <joint name="shoulder" x="108" y="112" />
+      <joint name="hip"     x="100" y="148" />
+      <joint name="knee"    x="102" y="194" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="105" y="200" />
+    </pose>
+    <!-- Lockout: hips extended, standing tall, bell hangs at sides. -->
     <pose t="0.5" label="lockout">
       <joint name="head"    x="100" y="44"  />
       <joint name="shoulder" x="100" y="74"  />
       <joint name="hip"     x="100" y="135" />
       <joint name="knee"    x="100" y="188" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="248" />
+      <joint name="hand"    x="100" y="208" />
     </pose>
-    <pose t="0.75" label="descent">
-      <joint name="head"    x="100" y="78"  />
-      <joint name="shoulder" x="100" y="108" />
-      <joint name="hip"     x="100" y="155" />
-      <joint name="knee"    x="103" y="190" />
+    <!-- Hold briefly at top. -->
+    <pose t="0.6" label="hold-top">
+      <joint name="head"    x="100" y="44"  />
+      <joint name="shoulder" x="100" y="74"  />
+      <joint name="hip"     x="100" y="135" />
+      <joint name="knee"    x="100" y="188" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="100" y="220" />
+      <joint name="hand"    x="100" y="208" />
+    </pose>
+    <!-- Descent: hips hinge back, knees bend. -->
+    <pose t="0.78" label="descent">
+      <joint name="head"    x="110" y="86"  />
+      <joint name="shoulder" x="108" y="112" />
+      <joint name="hip"     x="100" y="148" />
+      <joint name="knee"    x="102" y="194" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="105" y="200" />
+    </pose>
+    <!-- Near floor. -->
+    <pose t="0.92" label="near-floor">
+      <joint name="head"    x="118" y="118" />
+      <joint name="shoulder" x="115" y="142" />
+      <joint name="hip"     x="100" y="160" />
+      <joint name="knee"    x="108" y="208" />
+      <joint name="ankle"   x="100" y="248" />
+      <joint name="hand"    x="108" y="248" />
     </pose>
   </animation>
 </svg>

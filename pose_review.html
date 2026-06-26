@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KettleFit — Pose Review</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f1117; color: #e2e8f0;
+      padding: 18px 16px 80px; max-width: 1100px; margin: 0 auto;
+    }
+    h1 { margin-bottom: 4px; font-size: 1.4rem; }
+    h2 { font-size: 1.1rem; margin: 28px 0 10px; }
+    p { color: #94a3b8; margin: 4px 0 16px; font-size: 0.92rem; }
+    .pose-row {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;
+      padding: 12px; background: #1a1d27; border-radius: 12px;
+      border: 1px solid #2d3348;
+    }
+    .pose {
+      flex: 0 0 auto;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 4px;
+    }
+    .pose svg { display: block; background: #21253a; border-radius: 8px; }
+    .pose .label {
+      font-size: 0.72rem; color: #94a3b8; text-align: center;
+      max-width: 100px; font-weight: 600;
+    }
+    .pose .t {
+      font-size: 0.68rem; color: #f97316; font-family: monospace;
+    }
+    .stick-line { stroke: #e2e8f0; stroke-width: 3; stroke-linecap: round; }
+    .joint { fill: #94a3b8; }
+    .head { fill: #e2e8f0; }
+    .bell { fill: #f97316; }
+    .ghost { stroke-dasharray: 3 3; opacity: 0.4; }
+  </style>
+</head>
+<body>
+  <h1>Pose review — animation v2</h1>
+  <p>
+    Static review of each movement's poses, drawn from
+    <code>data/animations/*.svg</code>. Each cell is one keyframe pose.
+    Orange dot = bell position. The figure should read clearly as the
+    movement at each labeled position.
+  </p>
+  <div id="out"></div>
+
+  <script>
+    const EX = [
+      'kb_swing','goblet_squat','kb_deadlift','kb_rdl',
+      'kb_turkish_getup','kb_clean_single','kb_snatch'
+    ];
+
+    function el(tag, attrs, ...kids) {
+      const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+      for (const [k, v] of Object.entries(attrs || {})) e.setAttribute(k, v);
+      for (const k of kids.flat()) e.appendChild(typeof k === 'string' ? document.createTextNode(k) : k);
+      return e;
+    }
+
+    function drawPose(svg, joints) {
+      const W = svg.getAttribute('viewBox').split(' ')[2] | 0;
+      const H = svg.getAttribute('viewBox').split(' ')[3] | 0;
+      // Clear (in case re-drawing)
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      // Lines: spine (shoulder-hip), arms (shoulder-hand), leg segments
+      const lines = [
+        ['shoulder','hip'], ['shoulder','hand'],
+        ['hip','knee'], ['knee','ankle'],
+      ];
+      for (const [a, b] of lines) {
+        if (joints[a] && joints[b]) {
+          svg.appendChild(el('line', {
+            x1: joints[a].x, y1: joints[a].y,
+            x2: joints[b].x, y2: joints[b].y,
+            class: 'stick-line'
+          }));
+        }
+      }
+      // Pelvis bar
+      if (joints.hip) {
+        svg.appendChild(el('line', {
+          x1: joints.hip.x - 8, y1: joints.hip.y,
+          x2: joints.hip.x + 8, y2: joints.hip.y,
+          class: 'stick-line'
+        }));
+      }
+      // Shoulder bar
+      if (joints.shoulder) {
+        svg.appendChild(el('line', {
+          x1: joints.shoulder.x - 12, y1: joints.shoulder.y,
+          x2: joints.shoulder.x + 12, y2: joints.shoulder.y,
+          class: 'stick-line'
+        }));
+      }
+      // Joints
+      for (const name of ['shoulder','hip','knee','ankle']) {
+        if (joints[name]) {
+          svg.appendChild(el('circle', {
+            cx: joints[name].x, cy: joints[name].y, r: 3, class: 'joint'
+          }));
+        }
+      }
+      // Head
+      if (joints.head) {
+        svg.appendChild(el('circle', {
+          cx: joints.head.x, cy: joints.head.y, r: 9, class: 'head'
+        }));
+      }
+      // Bell
+      if (joints.hand) {
+        svg.appendChild(el('circle', {
+          cx: joints.hand.x, cy: joints.hand.y, r: 6, class: 'bell'
+        }));
+      }
+    }
+
+    async function loadSvg(id) {
+      const res = await fetch(`data/animations/${id}.svg`);
+      const txt = await res.text();
+      const doc = new DOMParser().parseFromString(txt, 'image/svg+xml');
+      const anim = doc.querySelector('animation');
+      const cycleMs = parseInt(anim.getAttribute('cycleMs') || '2000', 10);
+      const viewBox = doc.querySelector('svg').getAttribute('viewBox');
+      const poses = [...doc.querySelectorAll('pose')].map(p => ({
+        t: parseFloat(p.getAttribute('t')),
+        label: p.getAttribute('label'),
+        joints: Object.fromEntries([...p.querySelectorAll('joint')].map(j => [
+          j.getAttribute('name'),
+          { x: parseFloat(j.getAttribute('x')), y: parseFloat(j.getAttribute('y')) }
+        ]))
+      }));
+      return { cycleMs, viewBox, poses };
+    }
+
+    async function main() {
+      const out = document.getElementById('out');
+      for (const id of EX) {
+        const { cycleMs, viewBox, poses } = await loadSvg(id);
+        const h2 = document.createElement('h2');
+        h2.textContent = `${id} — cycle ${cycleMs}ms, ${poses.length} poses`;
+        out.appendChild(h2);
+        const row = document.createElement('div');
+        row.className = 'pose-row';
+        for (const p of poses) {
+          const cell = document.createElement('div');
+          cell.className = 'pose';
+          const [vbX, vbY, vbW, vbH] = viewBox.split(' ').map(Number);
+          const scale = 0.5;
+          const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          svg.setAttribute('viewBox', viewBox);
+          svg.setAttribute('width', vbW * scale);
+          svg.setAttribute('height', vbH * scale);
+          drawPose(svg, p.joints);
+          cell.appendChild(svg);
+          const lbl = document.createElement('div');
+          lbl.className = 'label';
+          lbl.textContent = p.label || `t=${p.t}`;
+          cell.appendChild(lbl);
+          const t = document.createElement('div');
+          t.className = 't';
+          t.textContent = `t=${p.t.toFixed(2)}`;
+          cell.appendChild(t);
+          row.appendChild(cell);
+        }
+        out.appendChild(row);
+      }
+    }
+    main();
+  </script>
+</body>
+</html>
