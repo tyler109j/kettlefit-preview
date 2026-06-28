@@ -67,13 +67,13 @@
       <joint name="ankle"   x="100" y="248" />
       <joint name="hand"    x="115" y="155" />
     </pose>
-    <pose t="0.92" label="re-hike">
+    <pose t="1.0" label="hike">
       <joint name="head"    x="120" y="92"  />
       <joint name="shoulder" x="115" y="118" />
       <joint name="hip"     x="100" y="138" />
       <joint name="knee"    x="103" y="184" />
       <joint name="ankle"   x="100" y="248" />
-      <joint name="hand"    x="118" y="222" />
+      <joint name="hand"    x="115" y="222" />
     </pose>
   </animation>
 </svg>

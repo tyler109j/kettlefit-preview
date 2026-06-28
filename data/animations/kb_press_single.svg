@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <!--
+    Kettlebell Single-Arm Press — side view, looping.
+    5 poses over 2000ms cycle. Joints: head, shoulder, hip, knee, ankle, hand.
+    The bell rests in the rack position (hand at shoulder height) at t=0 and
+    t=1.0, so the loop is seamless.
+
+    Side view shows the RIGHT arm holding the bell overhead.
+    Standing posture: shoulder-width stance, neutral spine, slight knee bend
+    on the dip, full hip+leg drive through the lockout.
+  -->
+  <animation id="kb_press_single" cycleMs="2000" loop="true">
+
+    <!-- Rack: bell at right shoulder, elbow tucked, neutral stance -->
+    <pose t="0" label="rack">
+      <joint name="head"     x="100" y="92"  />
+      <joint name="shoulder" x="100" y="118" />
+      <joint name="hip"      x="100" y="170" />
+      <joint name="knee"     x="100" y="218" />
+      <joint name="ankle"    x="100" y="262" />
+      <joint name="hand"     x="118" y="128" />
+    </pose>
+
+    <!-- Dip: small knee bend to load legs. Bell stays in rack. -->
+    <pose t="0.25" label="dip">
+      <joint name="head"     x="100" y="92"  />
+      <joint name="shoulder" x="100" y="120" />
+      <joint name="hip"      x="100" y="172" />
+      <joint name="knee"     x="100" y="222" />
+      <joint name="ankle"    x="100" y="262" />
+      <joint name="hand"     x="118" y="130" />
+    </pose>
+
+    <!-- Drive: legs extend powerfully, bell begins traveling up.
+         Hip rises slightly (the leg drive). Bell follows. -->
+    <pose t="0.50" label="drive">
+      <joint name="head"     x="100" y="88"  />
+      <joint name="shoulder" x="100" y="114" />
+      <joint name="hip"      x="100" y="168" />
+      <joint name="knee"     x="100" y="216" />
+      <joint name="ankle"    x="100" y="262" />
+      <joint name="hand"     x="128" y="92"  />
+    </pose>
+
+    <!-- Lockout: arm fully extended overhead, bell at apex.
+         Stacked joint line: wrist-shoulder-hip-ankle.
+         Slight shrug of shoulder. -->
+    <pose t="0.75" label="lockout">
+      <joint name="head"     x="100" y="84"  />
+      <joint name="shoulder" x="100" y="112" />
+      <joint name="hip"      x="100" y="166" />
+      <joint name="knee"     x="100" y="214" />
+      <joint name="ankle"    x="100" y="262" />
+      <joint name="hand"     x="135" y="58"  />
+    </pose>
+
+    <!-- Rack again: identical to t=0 to close the loop. -->
+    <pose t="1.0" label="rack">
+      <joint name="head"     x="100" y="92"  />
+      <joint name="shoulder" x="100" y="118" />
+      <joint name="hip"      x="100" y="170" />
+      <joint name="knee"     x="100" y="218" />
+      <joint name="ankle"    x="100" y="262" />
+      <joint name="hand"     x="118" y="128" />
+    </pose>
+  </animation>
+</svg>
